@@ -27,8 +27,18 @@ We all set.
 2. Non-intrusive or less intrusive way.
 
 We already have our CMakeLists.txt file with a lot of ```find_packages(...)``` in it.
-How to tell CMake to use Conan's binary packages? 
+
+How to tell CMake to use Conan's binary packages?
+
 Inject search paths using [CMAKE_TOOLCHAIN_FILE](https://cmake.org/cmake/help/latest/variable/CMAKE_TOOLCHAIN_FILE.html).
+
+```shell
+$ cd boost.log.nonintrusive; mkdir build; cd build
+$ conan install .. --build missing
+$ cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
+$ cmake --build .
+```
+We all set.
 
 **NOTE:** 
 
@@ -40,10 +50,4 @@ for example
 * ```$ cmake .. -D<BOOST_ROOT>=<path to dependency> [-D...]``` etc.
 * include conan_paths.cmake on top of your CMakeLists.txt (intrusive, but less changes in find_packages).
 
-```shell
-$ cd boost.log.nonintrusive; mkdir build; cd build
-$ conan install .. --build missing
-$ cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
-$ cmake --build .
-```
-We all set.
+
