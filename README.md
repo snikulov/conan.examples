@@ -42,7 +42,7 @@ We all set.
 
 **NOTE:** 
 
-I'm not sure if it correct, because I, sometimes, check for this variable to detect if I'm in cross-compilation mode.
+I'm not sure if it correct, because I, sometimes, check for CMAKE_TOOLCHAIN_FILE variable to detect if I'm in cross-compilation mode.
 
 To avoid TOOLCHAIN_FILE usage, a perhaps better way to provide conan_paths.cmake's variables through the command line.
 
