@@ -15,7 +15,10 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 
 # I don't want to place my binary into ${CMAKE_BINARY_DIR}/bin
 # so I enforce conan do not alter RUNTIME paths
-conan_basic_setup(NO_OUTPUT_DIRS)
+conan_basic_setup(TARGETS NO_OUTPUT_DIRS)
+
+find_package(Boost 1.71.0 COMPONENTS log REQUIRED)
+find_package(Threads)
 
 # Add your files here...
 set(SRC_FILES
@@ -23,4 +26,4 @@ set(SRC_FILES
   )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
-target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
+target_link_libraries(${PROJECT_NAME} Boost::log_setup Boost::log Threads::Threads)
